@@ -1,6 +1,8 @@
 import React from "react";
+import { toast } from 'react-toastify';
 import ParticipantList from "../components/ParticipantList/ParticipantList";
 import Footer from "../components/Footer/Footer";
+import { PersonAddOutline } from 'react-ionicons'
 import { Participants } from "../mocks/participants";
 import { PAGE_SIZE } from "../app.config";
 import './video-conference.scss'
@@ -20,13 +22,15 @@ const VideoConferenceScreen = () => {
       id: Math.random(2)
     }
     participantList.splice(selectedPageIndex*PAGE_SIZE, 0, newParticipant);
-    alert(`${newParticipant.name} join the call`)
+    toast.success(`${newParticipant.name} join the call`)
     setParticipantList([...participantList]);
   }
 
   return (
     <div className="video_conf_wrapper">
-      <button type="button" className="btn_add_participant" onClick={addParticipant}>Add Participant</button>
+      <button type="button" className="theme_btn btn_add_participant" onClick={addParticipant}>
+        <PersonAddOutline color="#ff" />
+      </button>
       <ParticipantList participantList={getParticipantsForPageNumber(selectedPageIndex)}/>
       <Footer totalItems={participantList.length} onPageChange={(index) => setSelectedPageIndex(index)}/>
     </div>

@@ -1,9 +1,9 @@
 import { useLayoutEffect, useState } from "react";
-const maxItemInRow = 5; 
-const maxNoOfRow = 2; 
+import { FOOTER_HEIGHT } from "../../app.config";
+const maxItemInRow = 5;
+const maxNoOfRow = 2;
 const totalVerticalSpacing = 120;
 const totalHorizontalSpacing = 80;
-const footerHeight = 50;
 
 export const useVideoCardSize = (cardCount) => {
   const [size, setSize] = useState([0, 0]);
@@ -11,10 +11,10 @@ export const useVideoCardSize = (cardCount) => {
     function updateSize() {
       let width = calWidth(cardCount);
       let height = calHeight(cardCount);
-      if(hasCardListOverflow(width)) {
-        width = 0.75*height;
+      if (hasCardListOverflow(width)) {
+        width = 0.75 * height;
       } else {
-        height = 1.33*width;
+        height = 1.33 * width;
       }
       setSize([width, height]);
     }
@@ -40,9 +40,12 @@ function calHeight(cardCount) {
 }
 
 function getParticipantContainerHeight() {
-  return document.getElementById('participant_lists').clientHeight
+  return document.getElementById("participant_lists").clientHeight;
 }
 
 function hasCardListOverflow(width) {
-  return maxNoOfRow*1.33*width > (window.innerHeight - (totalVerticalSpacing + footerHeight));
+  return (
+    maxNoOfRow * 1.33 * width >
+    window.innerHeight - (totalVerticalSpacing + FOOTER_HEIGHT)
+  );
 }

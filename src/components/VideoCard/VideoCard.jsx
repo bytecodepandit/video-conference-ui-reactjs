@@ -9,6 +9,7 @@ const VideoCard = ({ uri, name, width, height }) => {
         className="user_image_container"
         style={{ backgroundImage: `url(${uri})` }}
       />
+      <p className="participant_name">{name}</p>
     </div>
   );
 };
