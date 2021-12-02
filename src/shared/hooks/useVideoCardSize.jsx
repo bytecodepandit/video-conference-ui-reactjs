@@ -1,7 +1,5 @@
 import { useLayoutEffect, useState } from "react";
-import { FOOTER_HEIGHT } from "../../app.config";
-const maxItemInRow = 5;
-const maxNoOfRow = 2;
+import { FOOTER_HEIGHT, MAX_ITEM_IN_ROW , MAX_NO_OF_ROW} from "../../app.config";
 const totalVerticalSpacing = 120;
 const totalHorizontalSpacing = 80;
 
@@ -28,14 +26,14 @@ export const useVideoCardSize = (cardCount) => {
 function calWidth(cardCount) {
   return (
     (window.innerWidth - totalHorizontalSpacing) /
-    (cardCount >= maxItemInRow ? maxItemInRow : cardCount)
+    (cardCount >= MAX_ITEM_IN_ROW ? MAX_ITEM_IN_ROW : cardCount)
   );
 }
 
 function calHeight(cardCount) {
   return (
     (window.innerHeight - totalVerticalSpacing) /
-    (cardCount >= maxItemInRow ? maxNoOfRow : 1)
+    (cardCount >= MAX_ITEM_IN_ROW ? MAX_NO_OF_ROW : 1)
   );
 }
 
@@ -45,7 +43,7 @@ function getParticipantContainerHeight() {
 
 function hasCardListOverflow(width) {
   return (
-    maxNoOfRow * 1.33 * width >
+    MAX_NO_OF_ROW * 1.33 * width >
     window.innerHeight - (totalVerticalSpacing + FOOTER_HEIGHT)
   );
 }
