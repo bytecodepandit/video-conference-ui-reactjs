@@ -1,11 +1,7 @@
 .pagination_wrapper {
- .btn_page {
-    margin: 0 5px;
-    height: 40px;
-    width: 40px;
-    border-radius: 100px;
-    border: 0px;
-    background: rgb(60, 64, 67);
-    color: #fff;
+   flex: 1;
+   text-align: center;
+ .theme_btn {
+    font-size: 20px;
  }   
 }

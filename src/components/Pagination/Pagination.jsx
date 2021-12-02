@@ -18,7 +18,7 @@ const Pagination = ({ pageSize, totalItems, onPageChange }) => {
         <button
           type="button"
           onClick={() => onPageSelect(index)}
-          className={`theme_btn ${activePageIndex === index} ? 'active' : null`}
+          className={`theme_btn ${activePageIndex === index ? 'active' : null}`}
         >
           {index + 1}
         </button>
