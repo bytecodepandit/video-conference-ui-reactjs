@@ -11,7 +11,7 @@ const ParticipantList = ({ participantList }) => {
     <div className="participant_list_wrapper" id="participant_list_wrapper">
       <div className="participant_lists" id="participant_lists">
         {participantList.length > 0 &&
-          participantList.map((elem, index) => <VideoCard {...elem} width={width} height={height}/>)}
+          participantList.map((elem, index) => <VideoCard key={`video_card_${index}_${elem.id}`} {...elem} width={width} height={height}/>)}
       </div>
     </div>
   );
