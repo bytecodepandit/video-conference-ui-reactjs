@@ -16,7 +16,7 @@ const ParticipantList = ({ participantList }) => {
         {participantList.length > 0 &&
           participantList.map((user, index) => (
             <VideoCard
-              key={user.id}
+              key={`${user.id}`}
               uri={user.picture.large}
               name={`${user.name.title} ${user.name.first} ${user.name.last}`}
               width={width}

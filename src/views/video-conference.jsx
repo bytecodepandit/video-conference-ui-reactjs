@@ -2,7 +2,6 @@ import React from "react";
 import { toast } from "react-toastify";
 import ParticipantList from "../components/ParticipantList/ParticipantList";
 import Footer from "../components/Footer/Footer";
-import { PersonAddOutline } from "react-ionicons";
 import { PAGE_SIZE } from "../app.config";
 import "./video-conference.scss";
 import { getUser } from "../services/user.service";
@@ -28,10 +27,12 @@ const VideoConferenceScreen = () => {
       data: { results },
     } = await getUser(1);
     const user = results[0];
-    participantList.splice(selectedPageIndex * PAGE_SIZE, 0, {...user, id: `participant_${Math.random(10)}` });
+    participantList.splice(selectedPageIndex * PAGE_SIZE, 0, {...user, id: Math.random()*Date.now() });
+    
     toast.success(
       `${user.name.title} ${user.name.first} ${user.name.last} join the call`
     );
+    console.log('hello participant', participantList);
     setParticipantList([...participantList]);
   };
 
@@ -39,7 +40,7 @@ const VideoConferenceScreen = () => {
     const {
       data: { results },
     } = await getUser(PAGE_SIZE);
-    const updateList = results.map((elem) => ({...elem, id: `participant_${Math.random(10)}`}))
+    const updateList = results.map((elem) => ({...elem, id: Math.random()*Date.now()}))
     setParticipantList(updateList);
   };
 
