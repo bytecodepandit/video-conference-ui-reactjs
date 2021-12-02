@@ -28,7 +28,7 @@ const VideoConferenceScreen = () => {
       data: { results },
     } = await getUser(1);
     const user = results[0];
-    participantList.splice(selectedPageIndex * PAGE_SIZE, 0, user);
+    participantList.splice(selectedPageIndex * PAGE_SIZE, 0, {...user, id: `participant_${Math.random(10)}` });
     toast.success(
       `${user.name.title} ${user.name.first} ${user.name.last} join the call`
     );
@@ -39,8 +39,8 @@ const VideoConferenceScreen = () => {
     const {
       data: { results },
     } = await getUser(PAGE_SIZE);
-    console.log("hello result", results);
-    setParticipantList(results);
+    const updateList = results.map((elem) => ({...elem, id: `participant_${Math.random(10)}`}))
+    setParticipantList(updateList);
   };
 
   return (
