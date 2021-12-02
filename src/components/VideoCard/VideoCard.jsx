@@ -1,10 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useVideoCardSize } from "../../shared/hooks/useVideoCardSize";
 import "./VideoCard.scss";
 
-const VideoCard = ({ url, name }) => {
-  const [width, height] = useVideoCardSize(5);
+const VideoCard = ({ url, name, width, height }) => {
   return (
     <div className="video_card_wrapper" style={{ width: width, height: height }}>
       <div
@@ -20,4 +18,6 @@ export default VideoCard;
 VideoCard.propTypes = {
   url: PropTypes.string,
   name: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number
 };
